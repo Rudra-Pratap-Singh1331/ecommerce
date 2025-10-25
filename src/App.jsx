@@ -6,7 +6,6 @@ import Register from './pages/Register/Register';
 import NotFound from './pages/NotFound/NotFound';
 import AuthContextProvider from './context/Auth/Auth';
 import Home from './pages/Home/Home';
-import ProtectedRoute from './pages/ProtectedRoute/ProtectedRoute';
 import ProductDetails from './pages/ProductDetails/ProductDetails';
 import Cart from './pages/Cart/Cart';
 import CartContextProvider from './context/Cart/Cart';
@@ -23,7 +22,6 @@ import Brands from './pages/Brands/Brands';
 import Categories from './pages/Categories/Categories';
 import ProductsContextProvider from './context/Products/Products';
 import Search from './pages/Search/Search';
-import RedirectIfAuthenticated from './components/RedirectIfAuthenticated/RedirectIfAuthenticated';
 
 function App() {
   const queryClient = new QueryClient();
@@ -35,28 +33,17 @@ function App() {
       children: [
         {
           index: true,
-          element: (
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
-          ),
+          element: <Home />,
         },
-        {
-          path: 'login',
-          element: (
-            <RedirectIfAuthenticated>
-              <Login />
-            </RedirectIfAuthenticated>
-          ),
-        },
-        {
-          path: 'register',
-          element: (
-            <RedirectIfAuthenticated>
-              <Register />
-            </RedirectIfAuthenticated>
-          ),
-        },
+
+        // {
+        //   path: 'register',
+        //   element: (
+        //     <RedirectIfAuthenticated>
+        //       <Register />
+        //     </RedirectIfAuthenticated>
+        //   ),
+        // },
         {
           path: 'forgotPassword',
           element: <ForgotPassword />,
@@ -68,59 +55,31 @@ function App() {
         },
         {
           path: 'product/:id',
-          element: (
-            <ProtectedRoute>
-              <ProductDetails />
-            </ProtectedRoute>
-          ),
+          element: <ProductDetails />,
         },
         {
           path: '/checkout/:id',
-          element: (
-            <ProtectedRoute>
-              <Checkout />
-            </ProtectedRoute>
-          ),
+          element: <Checkout />,
         },
         {
           path: 'cart',
-          element: (
-            <ProtectedRoute>
-              <Cart />
-            </ProtectedRoute>
-          ),
+          element: <Cart />,
         },
         {
           path: 'wishlist',
-          element: (
-            <ProtectedRoute>
-              <Wishlist />
-            </ProtectedRoute>
-          ),
+          element: <Wishlist />,
         },
         {
           path: 'brands',
-          element: (
-            <ProtectedRoute>
-              <Brands />
-            </ProtectedRoute>
-          ),
+          element: <Brands />,
         },
         {
           path: 'categories',
-          element: (
-            <ProtectedRoute>
-              <Categories />
-            </ProtectedRoute>
-          ),
+          element: <Categories />,
         },
         {
           path: 'search',
-          element: (
-            <ProtectedRoute>
-              <Search />
-            </ProtectedRoute>
-          ),
+          element: <Search />,
         },
         { path: '*', element: <NotFound /> },
       ],

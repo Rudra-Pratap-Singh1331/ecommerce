@@ -46,7 +46,7 @@ export default function ProductItem({ product, isWished, handleWishlist }) {
           </div>
           <div className="flex items-center justify-between">
             <span className="md:text-xl text-2xl font-bold text-gray-900 dark:text-white">
-              EGP {product.price}
+              ₹ {product.price}
             </span>
             <button
               href="#"
